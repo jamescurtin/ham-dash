@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  python-base:
+    build: &build
+      context: .
+      dockerfile: docker/Dockerfile
+      target: builder-base
+  backend-dev: &dev
+    image: "ham-dash-dev:${TAG-latest}"
+    build:
+      <<: *build
+      target: development
+    env_file:
+      - .env
+    command:
+      ["uvicorn", "--reload", "--host=0.0.0.0", "--port=8000", "app.main:app"]
+    volumes:
+      - ./:/app
+    ports:
+      - "8000:8000"
+  backend:
+    <<: *dev
+    image: "ham-dash:${TAG-latest}"
+    build:
+      <<: *build
+      target: production
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+  lock-requirements:
+    <<: *dev
+    entrypoint: poetry
+    command: lock
+  test:
+    <<: *dev
+    entrypoint: /bin/bash
+    command: scripts/test.sh
+  lint:
+    <<: *dev
+    entrypoint: [/bin/bash, scripts/lint.sh]
