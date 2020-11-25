@@ -1,7 +1,10 @@
 # Ham Dash
-![Lint & Test](https://github.com/jamescurtin/ham-dash/workflows/Lint%20&%20Test/badge.svg)
 
-TODO
+![Lint & Test](https://github.com/jamescurtin/ham-dash/workflows/Lint%20&%20Test/badge.svg)
+![codecov](https://codecov.io/gh/jamescurtin/ham-dash/branch/main/graph/badge.svg)
+
+
+TODO: Summary
 
 ## Running
 
