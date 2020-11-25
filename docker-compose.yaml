@@ -35,8 +35,12 @@ services:
     command: lock
   test:
     <<: *dev
+    env_file:
+      - .env.example
     entrypoint: /bin/bash
     command: scripts/test.sh
   lint:
     <<: *dev
+    env_file:
+      - .env.example
     entrypoint: [/bin/bash, scripts/lint.sh]

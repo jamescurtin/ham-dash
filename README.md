@@ -5,6 +5,8 @@ TODO
 
 ## Running
 
+Copy `.env.example` to `.env` and replace the placeholders with real values.
+
 To run in development mode (with auto-reloading):
 
 ```bash
