@@ -26,6 +26,8 @@ black ${BLACK_ARGS} --config "${BASE_DIR}/pyproject.toml" "${BASE_DIR}"
 echo "Running isort..."
 isort ${ISORT_ARGS} --settings-path "${BASE_DIR}/pyproject.toml" "${BASE_DIR}"
 echo "Running flake8..."
-flake8
+flake8 "${BASE_DIR}"
+echo "Running mypy..."
+mypy "${BASE_DIR}"
 echo "Running pydocstyle..."
 pydocstyle
