@@ -1,4 +1,5 @@
 # Ham Dash
+![Lint & Test](https://github.com/jamescurtin/ham-dash/workflows/Lint%20&%20Test/badge.svg)
 
 TODO
 
