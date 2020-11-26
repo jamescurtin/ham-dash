@@ -1,8 +1,8 @@
 # Ham Dash
 
 ![Lint & Test](https://github.com/jamescurtin/ham-dash/workflows/Lint%20&%20Test/badge.svg)
-![codecov](https://codecov.io/gh/jamescurtin/ham-dash/branch/main/graph/badge.svg)
-
+[![codecov](https://codecov.io/gh/jamescurtin/ham-dash/branch/main/graph/badge.svg?token=zmg1twfMd1)](https://codecov.io/gh/jamescurtin/ham-dash)
+[![license](https://img.shields.io/github/license/jamescurtin/ham-dash.svg)](https://github.com/jamescurtin/ham-dash/blob/main/LICENSE)
 
 TODO: Summary
 
@@ -22,7 +22,7 @@ To run in production mode:
 docker-compose up backend
 ```
 
-and go to http://localhost:8000
+and go to [http://localhost:8000](http://localhost:8000)
 
 ## Updating Dependencies
 
