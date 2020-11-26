@@ -6,7 +6,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: cp .env.example .env
+      - name: Build Image
+        run: docker-compose build backend-dev
       - name: Lint
         run: docker-compose run --rm lint --check-only
       - name: Test
         run: docker-compose run --rm test
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage.xml
+          env_vars: OS,PYTHON
+          fail_ci_if_error: true
+        env:
+          CODECOV_TOKEN: "79d7be69-fbb0-45be-93cb-fb79442d293a"
