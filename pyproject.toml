@@ -25,7 +25,7 @@ mypy = '0.812'
 pydocstyle = "6.0.0"
 pytest = "6.2.3"
 pytest-cov = '2.11.1'
-pytest-mock = "3.5.1"
+pytest-mock = "3.6.0"
 requests-mock = "1.8.0"
 pdbpp =  "0.10.2"
 
