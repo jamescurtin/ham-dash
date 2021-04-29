@@ -18,7 +18,7 @@ requests = "^2.25.1"
 uvicorn = "0.13.4"
 
 [tool.poetry.dev-dependencies]
-black = "^21.4b1"
+black = "^21.4b2"
 flake8 = "3.9.1"
 isort = { version = "5.8.0", extras = ["pyproject"]}
 mypy = '0.812'
