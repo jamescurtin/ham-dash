@@ -119,27 +119,30 @@ def test__get_hamqh_client__caches_client(requests_mock):
     assert get_session_id_mock.call_count == 1
 
 
-def test__fetch_callsign_data__response__converts_to_dict(mocker):
+def test_fetch_callsign_data__response__converts_to_dict(mocker):
     hamqth_client = mocker.Mock()
     hamqth_client.search_callsign = mocker.Mock(return_value=SOME_CALLSIGN_XML)
     mocker.patch(
         "app.api.endpoints.hamqth._get_hamqh_client", return_value=hamqth_client
     )
-    assert hamqth._fetch_callsign_data("ok2cqr") == EXPECTED_CALLSIGN_DICT
+    assert hamqth.fetch_callsign_data("ok2cqr") == EXPECTED_CALLSIGN_DICT
 
 
-def test__fetch_callsign_data__response__handles_exception(mocker):
+def test_fetch_callsign_data__response__handles_exception(mocker):
     hamqth_client = mocker.Mock()
     hamqth_client.search_callsign = mocker.Mock(side_effect=HamQTHClientError)
     mocker.patch(
         "app.api.endpoints.hamqth._get_hamqh_client", return_value=hamqth_client
     )
-    assert hamqth._fetch_callsign_data("not_a_call") == {}
+    assert hamqth.fetch_callsign_data("98765notreal") == {
+        "callsign": "98765notreal",
+        "country": "Unknown",
+    }
 
 
 def test_callsign_endpoint__successful_response(testclient: TestClient, mocker):
     mocker.patch(
-        "app.api.endpoints.hamqth._fetch_callsign_data",
+        "app.api.endpoints.hamqth.fetch_callsign_data",
         return_value=EXPECTED_CALLSIGN_DICT,
     )
     r = testclient.get(
@@ -147,3 +150,14 @@ def test_callsign_endpoint__successful_response(testclient: TestClient, mocker):
     )
 
     assert r.status_code == 200, r.text
+
+
+@pytest.mark.parametrize(
+    ["callsign", "country"],
+    [("KC123", "United States of America"), ("M123", "England")],
+)
+def test__get_fallback_country_information__known_callsign__returns_correct_country(
+    callsign,
+    country,
+):
+    assert hamqth._get_fallback_country_information(callsign) == country
