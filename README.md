@@ -24,14 +24,17 @@ docker-compose up backend
 
 and go to [http://localhost:8000](http://localhost:8000)
 
-## Updating Dependencies
+## Modifying Dependencies
 
-Requirements should be re-locked every time dependencies in `pyproject.toml` are updated.
-Images should then be re-built to include the new dependencies.
+Use `poetry` to update dependencies, instead of modifying `pyproject.toml`
+directly. This can be done using the `poetry` service in `docker-compose.yaml`.
+Images should then be re-built to include the updated dependencies.
+
+Add a dependency
 
 ```bash
-docker-compose run --rm lock-requirements
-docker-compose run build
+docker-compose run --rm poetry add <SOME-DEPENDENCY>
+docker-compose build
 ```
 
 ## Testing & Linting

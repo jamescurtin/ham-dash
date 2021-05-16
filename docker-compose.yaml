@@ -29,10 +29,10 @@ services:
       - .env
     ports:
       - "8000:8000"
-  lock-requirements:
+  poetry:
     <<: *dev
     entrypoint: poetry
-    command: lock
+    command: --help
   test:
     <<: *dev
     env_file:
