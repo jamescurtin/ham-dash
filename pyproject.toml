@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "poetry.masonry.api"
-requires = ["poetry~=1.0.5"]
+requires = ["poetry~=1.1.8"]
 
 [tool.poetry]
 authors = ["James Curtin <jameswcurtin@gmail.com>"]
