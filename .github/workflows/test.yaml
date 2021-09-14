@@ -13,7 +13,7 @@ jobs:
       - name: Test
         run: docker-compose run --rm test
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2.0.3
+        uses: codecov/codecov-action@v2.1.0
         with:
           file: ./coverage.xml
           fail_ci_if_error: true
