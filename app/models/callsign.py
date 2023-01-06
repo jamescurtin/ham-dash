@@ -31,8 +31,8 @@ class CallSign(BaseModel):
     adr_country: Optional[str]
     us_state: Optional[str]
     utc_offset: Optional[int]
-    latitude: float = Field(None, ge=-90, le=90)
-    longitude: float = Field(None, ge=-180, le=180)
+    latitude: float = Field(type=Optional[float], ge=-90, le=90)
+    longitude: float = Field(type=Optional[float], ge=-180, le=180)
     country_code: Optional[str] = None
 
     @validator("country_code", always=True)

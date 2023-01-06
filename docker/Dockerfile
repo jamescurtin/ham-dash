@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 #                                  PYTHON BASE
 # ------------------------------------------------------------------------------
-FROM python:3.8.12-slim as python-base
+FROM python:3.11.1-slim as python-base
 ENV PIP_DISABLE_PIP_VERSION_CHECK=on \
     PIP_NO_CACHE_DIR=off \
     POETRY_HOME="/opt/poetry" \
@@ -24,10 +24,12 @@ RUN apt-get update \
 
 # Install Poetry - respects $POETRY_VERSION & $POETRY_HOME
 ENV POETRY_VERSION=1.1.8
-RUN curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+RUN curl -sSL https://install.python-poetry.org | python3 -
 
 WORKDIR $PYSETUP_PATH
 COPY ./poetry.lock ./pyproject.toml ./
+# https://github.com/python-poetry/poetry/issues/4210
+RUN poetry config experimental.new-installer false
 RUN poetry install --no-dev
 
 # ------------------------------------------------------------------------------
@@ -41,6 +43,8 @@ COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
 COPY ./docker/docker-entrypoint.sh /docker-entrypoint.sh
 
 WORKDIR $PYSETUP_PATH
+# https://github.com/python-poetry/poetry/issues/4210
+RUN poetry config experimental.new-installer false
 RUN poetry install
 
 WORKDIR /app
