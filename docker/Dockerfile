@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 #                                  PYTHON BASE
 # ------------------------------------------------------------------------------
-FROM python:3.11.1-slim as python-base
+FROM python:3.11.2-slim as python-base
 ENV PIP_DISABLE_PIP_VERSION_CHECK=on \
     PIP_NO_CACHE_DIR=off \
     POETRY_HOME="/opt/poetry" \
