@@ -42,3 +42,14 @@ def test_CallSign__validator__parses_country_code():
 def test_CallSign__validator__uppercase_callsign():
     call_sign = CallSign(**SOME_CALLSIGN_DATA)
     assert call_sign.callsign == SOME_CALLSIGN_DATA["callsign"].upper()
+
+
+def test_CallSign__validator__missing_latlng():
+    call_sign_data = SOME_CALLSIGN_DATA.copy()
+    del call_sign_data["latitude"]
+    del call_sign_data["longitude"]
+
+    call_sign = CallSign(**call_sign_data)
+
+    assert call_sign.latitude is None
+    assert call_sign.longitude is None
