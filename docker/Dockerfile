@@ -23,14 +23,12 @@ RUN apt-get update \
     build-essential
 
 # Install Poetry - respects $POETRY_VERSION & $POETRY_HOME
-ENV POETRY_VERSION=1.1.8
+ENV POETRY_VERSION=1.5.1
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
 WORKDIR $PYSETUP_PATH
 COPY ./poetry.lock ./pyproject.toml ./
-# https://github.com/python-poetry/poetry/issues/4210
-RUN poetry config experimental.new-installer false
-RUN poetry install --no-dev
+RUN poetry install --only main
 
 # ------------------------------------------------------------------------------
 #                                  DEVELOPMENT
@@ -43,8 +41,6 @@ COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
 COPY ./docker/docker-entrypoint.sh /docker-entrypoint.sh
 
 WORKDIR $PYSETUP_PATH
-# https://github.com/python-poetry/poetry/issues/4210
-RUN poetry config experimental.new-installer false
 RUN poetry install
 
 WORKDIR /app
