@@ -376,13 +376,13 @@ pyflakes = ">=3.0.0,<3.1.0"
 
 [[package]]
 name = "gunicorn"
-version = "21.0.1"
+version = "21.1.0"
 description = "WSGI HTTP Server for UNIX"
 optional = false
 python-versions = ">=3.5"
 files = [
-    {file = "gunicorn-21.0.1-py3-none-any.whl", hash = "sha256:949880781d74f55eda34eb1a552f9c83db6edb42f2bd4f87c09e2a66b13922ea"},
-    {file = "gunicorn-21.0.1.tar.gz", hash = "sha256:b18fa5a9b22becdffc29d2586b914225a69624bb3e3a064cb04decfb2f34bfe8"},
+    {file = "gunicorn-21.1.0-py3-none-any.whl", hash = "sha256:11fc98ea214a5845f614891e8c90b0211fbe595e677d204d7cd7d80f6f348891"},
+    {file = "gunicorn-21.1.0.tar.gz", hash = "sha256:37ced4b6622f263a6483eb7cbe9606df81afd57dc0fa464883600624790271c5"},
 ]
 
 [package.dependencies]
@@ -1607,4 +1607,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "8dcee96ac686e26094634215868000d88abb10ea81f8a907ac5fb65a1b278b39"
+content-hash = "1244c953ed7792ccbff3a1786f0e2b3797c8ee6aecd9d657fb883308770d97f7"
