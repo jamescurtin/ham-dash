@@ -24,7 +24,7 @@ pydantic-settings = "^2.0.1"
 [tool.poetry.dev-dependencies]
 black = "23.7.0"
 fastapi = { version = "0.100.1", extras = ["all"]}
-flake8 = "6.0.0"
+flake8 = "6.1.0"
 isort = { version = "5.12.0", extras = ["pyproject"]}
 mypy = '1.4.1'
 pydocstyle = "6.3.0"
