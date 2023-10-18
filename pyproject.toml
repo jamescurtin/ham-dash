@@ -10,7 +10,7 @@ version = "0.1.0"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = "0.103.2"
+fastapi = "0.104.0"
 gunicorn = "21.2.0"
 hamqth = "0.1.3"
 pycountry = "22.3.5"
@@ -23,7 +23,7 @@ pydantic-settings = "^2.0.1"
 
 [tool.poetry.dev-dependencies]
 black = "23.10.0"
-fastapi = { version = "0.103.2", extras = ["all"]}
+fastapi = { version = "0.104.0", extras = ["all"]}
 flake8 = "6.1.0"
 isort = { version = "5.12.0", extras = ["pyproject"]}
 mypy = '1.6.1'
