@@ -22,7 +22,7 @@ call_to_dxcc = "^0.0.1"
 pydantic-settings = "^2.0.1"
 
 [tool.poetry.dev-dependencies]
-black = "23.11.0"
+black = "24.3.0"
 fastapi = { version = "0.104.1", extras = ["all"]}
 flake8 = "6.1.0"
 isort = { version = "5.12.0", extras = ["pyproject"]}
